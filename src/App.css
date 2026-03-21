@@ -1,0 +1,46 @@
+/* ===== VARIABLES ===== */
+:root {
+  --primary: #0284C7;
+  --dark: #0F172A;
+  --white: #FFFFFF;
+  --gray-100: #F1F5F9;
+}
+
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+  background-color: var(--dark);
+  padding: 16px 32px;
+}
+
+.navbar__logo {
+  color: var(--white);
+  font-size: 1.3rem;
+}
+
+/* ===== HERO ===== */
+.hero {
+  padding: 80px 32px;
+  background-color: var(--gray-100);
+}
+
+.hero__titulo {
+  font-size: 2rem;
+  color: var(--dark);
+  margin-bottom: 16px;
+}
+
+.hero__descripcion {
+  font-size: 1.1rem;
+  color: #475569;
+}
