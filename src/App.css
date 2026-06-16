@@ -16,31 +16,3 @@
 body {
   font-family: sans-serif;
 }
-
-/* ===== NAVBAR ===== */
-.navbar {
-  background-color: var(--dark);
-  padding: 16px 32px;
-}
-
-.navbar__logo {
-  color: var(--white);
-  font-size: 1.3rem;
-}
-
-/* ===== HERO ===== */
-.hero {
-  padding: 80px 32px;
-  background-color: var(--gray-100);
-}
-
-.hero__titulo {
-  font-size: 2rem;
-  color: var(--dark);
-  margin-bottom: 16px;
-}
-
-.hero__descripcion {
-  font-size: 1.1rem;
-  color: #475569;
-}

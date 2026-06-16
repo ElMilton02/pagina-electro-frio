@@ -1,0 +1,163 @@
+.navbar {
+  background-color: #1E293B;
+  padding: 20px 32px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.navbar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Logo y links juntos a la izquierda */
+.navbar__izquierda {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.navbar__logo {
+  color: var(--white);
+  font-size: 1.6rem;
+}
+
+/* Links con animación de subrayado */
+.navbar__links {
+  display: flex;
+  gap: 4px;
+}
+
+.navbar__links button {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 8px 14px;
+  border-radius: 8px;
+  position: relative;
+  transition: color 0.2s;
+}
+
+/* Línea de subrayado animada */
+.navbar__links button::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 14px;
+  right: 14px;
+  height: 2px;
+  background-color: var(--white);
+  transform: scaleX(0);
+  transition: transform 0.25s ease;
+  border-radius: 2px;
+}
+
+.navbar__links button:hover {
+  color: var(--white);
+}
+
+.navbar__links button:hover::after {
+  transform: scaleX(1);
+}
+
+/* Botón llamada a la derecha */
+.navbar__derecha {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navbar__llamada {
+  background-color: #F59E0B;
+  color: var(--white);
+  padding: 12px 28px;
+  border-radius: 100px;
+  font-size: 1rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid #F59E0B;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  white-space: nowrap;
+}
+
+.navbar__llamada:hover {
+  background-color: white;
+  color: #F59E0B;
+  transform: scale(1.04);
+}
+
+/* Hamburguesa — oculta en desktop */
+.navbar__hamburguesa {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.navbar__linea {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+/* Menú desplegable mobile */
+.navbar__menu {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.navbar__menu--abierto {
+  max-height: 300px;
+}
+
+.navbar__menu button {
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 12px 16px;
+  text-align: left;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.navbar__menu button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+
+  .navbar__links {
+    display: none;
+  }
+
+  .navbar__llamada {
+    font-size: 0.85rem;
+    padding: 10px 20px;
+  }
+}
