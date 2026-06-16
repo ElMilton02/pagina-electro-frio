@@ -14,9 +14,9 @@ function Footer() {
         {/* Contacto */}
         <div className="footer__seccion">
           <h3 className="footer__titulo">Contacto</h3>
-          <p>+54 249 xxx-xxxx</p>
+          <p>+54 2314-574880</p>
           <p>contacto@electrofrio.com.ar</p>
-          <p>Tandil, Buenos Aires</p>
+          <p>Urdampilleta, Buenos Aires</p>
         </div>
 
         {/* Redes sociales */}

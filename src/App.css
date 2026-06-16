@@ -3,7 +3,7 @@
   --primary: #0284C7;
   --dark: #0F172A;
   --white: #FFFFFF;
-  --gray-100: #F1F5F9;
+  --gray-100: #E8F4FA;
 }
 
 /* ===== RESET BÁSICO ===== */
@@ -15,4 +15,5 @@
 
 body {
   font-family: sans-serif;
+  background-color: #ffffff;
 }

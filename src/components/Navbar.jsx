@@ -22,8 +22,8 @@ function Navbar() {
 
         {/* Botón llamada a la derecha */}
         <div className="navbar__derecha">
-          <a href="tel:+54249xxxxxxx" className="navbar__llamada">
-             Contacto: +54 249 xxx-xxxx
+          <a href="tel:+54 2314-574880" className="navbar__llamada">
+             Contacto: +54 2314-574880
           </a>
         </div>
 
