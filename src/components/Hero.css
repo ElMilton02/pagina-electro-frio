@@ -1,8 +1,8 @@
 .hero {
   position: relative;
   width: 100%;
-  height: 60vh;
-  margin-top: 72px;
+  height: 78vh;
+  margin-top: 90px;
   overflow: hidden;
   cursor: grab;
   user-select: none;
@@ -80,8 +80,8 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  max-width: 480px;
-  padding: 40px 48px;
+  max-width: 66%;
+  padding: 0 150px 56px;
   z-index: 3;
   transition: opacity 0.3s ease;
 }
@@ -95,23 +95,17 @@
 }
 
 .hero__titulo {
-  font-size: 1.7rem;
+  font-size: 2.6rem;
   color: var(--white);
   margin-bottom: 8px;
   line-height: 1.2;
 }
 
-.hero__descripcion {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
-  line-height: 1.6;
-  max-width: 420px;
-}
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
   .hero {
-    height: 50vh;
+    height: 70vh;
   }
 
   .hero__texto {
@@ -119,10 +113,7 @@
   }
 
   .hero__titulo {
-    font-size: 1.5rem;
+    font-size: 1.9rem;
   }
 
-  .hero__descripcion {
-    font-size: 0.9rem;
-  }
 }

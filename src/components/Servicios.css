@@ -14,30 +14,50 @@
   margin-bottom: 16px;
 }
 
-.servicios__subtitulo {
-  font-size: 1.2rem;
-  color: #475569;
-  line-height: 1.6;
-}
-
-.servicios__grid {
+/* El recuadro grande que envuelve todo */
+.servicios__recuadro {
+  background-color: #bddff7;
+  border-radius: 16px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 32px;
   max-width: 1400px;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 .servicio-card {
   display: flex;
   flex-direction: column;
+  padding: 56px 32px 200px;
+  position: relative;
+}
+
+/* Línea divisoria difuminada — gradiente en lugar de border sólido */
+.servicio-card::after {
+  content: '';
+  position: absolute;
+  top: 10%;
+  bottom: 10%;
+  right: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(15, 23, 42, 0.15) 30%,
+    rgba(15, 23, 42, 0.15) 70%,
+    transparent
+  );
+}
+
+.servicio-card:last-child::after {
+  display: none;
 }
 
 .servicio-card__imagen {
   width: 100%;
   height: 190px;
   object-fit: cover;
-
+  border-radius: 8px;
   margin-bottom: 20px;
 }
 
@@ -55,8 +75,44 @@
 
 /* ===== TABLET ===== */
 @media (max-width: 1024px) {
-  .servicios__grid {
+  .servicios__recuadro {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* En tablet hay 2 columnas: la línea vertical solo va en la primera (impares) */
+  .servicio-card:nth-child(odd)::after {
+    top: 10%;
+    bottom: auto;
+    left: auto;
+    right: 0;
+    width: 1px;
+    height: 80%;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(15, 23, 42, 0.15) 30%,
+      rgba(15, 23, 42, 0.15) 70%,
+      transparent
+    );
+  }
+
+  /* Todas las tarjetas (menos las dos últimas) llevan línea horizontal abajo */
+  .servicio-card:not(:nth-last-child(-n+2))::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    top: auto;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(15, 23, 42, 0.15) 30%,
+      rgba(15, 23, 42, 0.15) 70%,
+      transparent
+    );
   }
 }
 
@@ -71,9 +127,29 @@
     margin-bottom: 32px;
   }
 
-  .servicios__grid {
+  .servicios__recuadro {
     grid-template-columns: 1fr;
-    gap: 32px;
+  }
+
+  /* En mobile es 1 columna: solo línea horizontal abajo de cada tarjeta */
+  .servicio-card::after {
+    top: auto;
+    bottom: 0;
+    left: 10%;
+    right: 10%;
+    width: auto;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(15, 23, 42, 0.15) 30%,
+      rgba(15, 23, 42, 0.15) 70%,
+      transparent
+    );
+  }
+
+  .servicio-card:last-child::after {
+    display: none;
   }
 
   .servicio-card__imagen {

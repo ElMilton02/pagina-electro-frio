@@ -44,19 +44,17 @@ function ServicioCard({ servicio }) {
 function Servicios() {
   return (
     <section className="servicios" id="servicios">
-  <div className="servicios__header">
-    <h2 className="servicios__titulo">Servicios</h2>
-    <p className="servicios__subtitulo">
-      Soluciones completas de refrigeración industrial, desde la instalación
-      hasta el mantenimiento y reparación de tus equipos.
-    </p>
-  </div>
-  <div className="servicios__grid">
-    {servicios.map((servicio) => (
-      <ServicioCard key={servicio.id} servicio={servicio} />
-    ))}
-  </div>
-</section>
+      <div className="servicios__header">
+        <h2 className="servicios__titulo">Servicios</h2>
+      </div>
+
+      {/* Un solo recuadro que envuelve los 4 servicios */}
+      <div className="servicios__recuadro">
+        {servicios.map((servicio) => (
+          <ServicioCard key={servicio.id} servicio={servicio} />
+        ))}
+      </div>
+    </section>
   )
 }
 

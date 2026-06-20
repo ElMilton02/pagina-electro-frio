@@ -5,19 +5,16 @@ const slides = [
   {
     id: 1,
     titulo: 'Instalación de Equipos',
-    descripcion: 'Instalamos equipos de refrigeración industrial con la más alta precisión.',
     imagen: 'https://picsum.photos/seed/frio1/1200/600',
   },
   {
     id: 2,
     titulo: 'Mantenimiento Preventivo',
-    descripcion: 'Mantenemos tus equipos en óptimas condiciones para evitar fallas.',
     imagen: 'https://picsum.photos/seed/frio2/1200/600',
   },
   {
     id: 3,
     titulo: 'Reparación de Averías',
-    descripcion: 'Diagnóstico y reparación rápida para que tu negocio no se detenga.',
     imagen: 'https://picsum.photos/seed/frio3/1200/600',
   },
 ]
@@ -126,7 +123,7 @@ function Hero() {
 
       <div className={`hero__texto ${textoVisible ? 'hero__texto--visible' : 'hero__texto--oculto'}`}>
         <h2 className="hero__titulo">{slides[actual].titulo}</h2>
-        <p className="hero__descripcion">{slides[actual].descripcion}</p>
++
       </div>
 
     </section>

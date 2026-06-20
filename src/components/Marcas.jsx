@@ -11,7 +11,7 @@ const marcas = [
 function Marcas() {
   return (
     <section className="marcas">
-      <h2 className="marcas__titulo">Trabajamos con las mejores marcas</h2>
+      <h2 className="marcas__titulo">Marcas asociadas</h2>
       <div className="marcas__grid">
         {marcas.map((marca) => (
           <div key={marca.id} className="marcas__item">
