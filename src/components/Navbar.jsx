@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import './Navbar.css'
 
 function Navbar() {
@@ -10,7 +9,6 @@ function Navbar() {
     <nav className="navbar">
       <div className="navbar__inner">
 
-        {/* Logo y links juntos a la izquierda */}
         <div className="navbar__izquierda">
           <h1 className="navbar__logo">Electro Frío</h1>
           <div className="navbar__links">
@@ -20,11 +18,14 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Botón llamada a la derecha */}
         <div className="navbar__derecha">
-          <a href="tel:+54 2314-574880" className="navbar__llamada">
-             Contacto: +54 2314-574880
-          </a>
+          <button className="navbar__llamada" onClick={() => scrollTo('contacto')}>
+            <span className="navbar__llamada-icono">📞</span>
+            {/* Texto corto — visible solo en mobile */}
+            <span className="navbar__llamada-corto">Llamar</span>
+            {/* Texto largo — visible solo en pantallas grandes */}
+            <span className="navbar__llamada-largo">Contacto: +54 2314-574880</span>
+          </button>
         </div>
 
       </div>

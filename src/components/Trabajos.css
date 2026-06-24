@@ -1,90 +1,36 @@
-/* ===== TRABAJOS ===== */
+/* ===== BASE: ESTILOS MOBILE (por defecto) ===== */
+
 .trabajos {
-  padding: 80px 32px;
+  padding: 56px 10px;
 }
 
 .trabajos__titulo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: var(--dark);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 32px;
+  padding: 0 24px;
 }
 
-/* ===== CARRUSEL ===== */
-.trabajos__carrusel {
+/* Contenedor con scroll horizontal nativo */
+.trabajos__scroll {
   display: flex;
-  align-items: center;
   gap: 16px;
-  max-width: 1100px;
-  margin: 0 auto;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 16px 8px 32px;
+  scrollbar-width: none;
 }
 
-.trabajos__flecha {
-  flex-shrink: 0;
-  background: none;
-  border: none;
-  color: var(--dark);
-  font-size: 2.5rem;
-  font-weight: 300;
-  cursor: pointer;
-  padding: 8px 12px;
-  line-height: 1;
-  transition: color 0.2s, transform 0.2s;
+.trabajos__scroll::-webkit-scrollbar {
+  display: none; /* oculta la barra de scroll en Chrome/Safari */
 }
 
-.trabajos__flecha:hover {
-  color: var(--primary);
-  transform: scale(1.15);
-}
-
-/* Grilla de imágenes — el bloque que va entre las dos flechas */
-.trabajos__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-  flex: 1;
-  min-width: 0;
-}
-
-/* Animación de transición al cambiar de página */
-.trabajos__grid--salida-izq {
-  animation: trabajosSalirIzq 0.3s ease forwards;
-}
-
-.trabajos__grid--salida-der {
-  animation: trabajosSalirDer 0.3s ease forwards;
-}
-
-.trabajos__grid--entrada-izq {
-  animation: trabajosEntrarIzq 0.3s ease forwards;
-}
-
-.trabajos__grid--entrada-der {
-  animation: trabajosEntrarDer 0.3s ease forwards;
-}
-
-@keyframes trabajosSalirIzq {
-  from { transform: translateX(0); opacity: 1; }
-  to   { transform: translateX(-40px); opacity: 0; }
-}
-
-@keyframes trabajosSalirDer {
-  from { transform: translateX(0); opacity: 1; }
-  to   { transform: translateX(40px); opacity: 0; }
-}
-
-@keyframes trabajosEntrarIzq {
-  from { transform: translateX(-40px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes trabajosEntrarDer {
-  from { transform: translateX(40px); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
-}
-
-/* ===== TARJETAS ===== */
 .trabajo-card {
+  scroll-snap-align: start; /* punto exacto donde la tarjeta encaja */
+  flex: 0 0 78%; /* cada tarjeta ocupa 78% del ancho — deja ver la siguiente */
+  cursor: pointer;
   background-color: var(--white);
   border-radius: 12px;
   overflow: hidden;
@@ -119,32 +65,40 @@
   line-height: 1.6;
 }
 
-/* ===== INDICADORES ===== */
-.trabajos__indicadores {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  margin-top: 32px;
+
+/* ===== TABLET (768px y más) ===== */
+@media (min-width: 768px) {
+
+  .trabajos__titulo {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+
+  /* Tarjetas más angostas — se ven 1 y media en pantallas medianas */
+  .trabajo-card {
+    flex: 0 0 45%;
+  }
 }
 
-.trabajos__punto {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #CBD5E1;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
+
+/* ===== DESKTOP (1024px y más) ===== */
+@media (min-width: 1024px) {
+
+  .trabajos__scroll {
+    /* Pasa de scroll horizontal a grilla fija */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    overflow-x: visible;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* En grid, flex-basis no aplica — no hace falta resetear nada */
 }
 
-.trabajos__punto--activo {
-  background: var(--primary);
-}
 
 /* ===== MODAL ===== */
-.trabajo-card {
-  cursor: pointer; /* indica que la tarjeta es clickeable */
-}
 
 .modal__fondo {
   position: fixed;
@@ -187,11 +141,10 @@
   background: rgba(0, 0, 0, 0.6);
 }
 
-/* Carrusel de imágenes dentro del modal */
 .modal__imagen-wrapper {
   position: relative;
   width: 100%;
-  height: 380px;
+  height: 260px;
 }
 
 .modal__imagen {
@@ -239,9 +192,8 @@
   border-radius: 100px;
 }
 
-/* Texto del modal */
 .modal__texto {
-  padding: 28px;
+  padding: 20px;
 }
 
 .modal__titulo {
@@ -256,24 +208,12 @@
   line-height: 1.7;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .modal__imagen-wrapper {
-    height: 260px;
+    height: 380px;
   }
 
   .modal__texto {
-    padding: 20px;
-  }
-}
-
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
-  .trabajos__carrusel {
-    gap: 4px;
-  }
-
-  .trabajos__flecha {
-    font-size: 2rem;
+    padding: 28px;
   }
 }

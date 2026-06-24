@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import './Trabajos.css'
 
-// Cada trabajo ahora tiene un array de imágenes y un procedimiento detallado
 const trabajos = [
   {
     id: 1,
@@ -97,7 +96,6 @@ const trabajos = [
   },
 ]
 
-// Tarjeta de cada trabajo — ahora recibe una función para abrir el modal
 function TrabajosCard({ trabajo, onClick }) {
   return (
     <div className="trabajo-card" onClick={() => onClick(trabajo)}>
@@ -110,7 +108,6 @@ function TrabajosCard({ trabajo, onClick }) {
   )
 }
 
-// Modal que muestra el detalle del trabajo seleccionado
 function TrabajoModal({ trabajo, onCerrar }) {
   const [indiceImagen, setIndiceImagen] = useState(0)
 
@@ -123,14 +120,11 @@ function TrabajoModal({ trabajo, onCerrar }) {
   }
 
   return (
-    // El fondo oscuro — al hacer click afuera del modal, se cierra
     <div className="modal__fondo" onClick={onCerrar}>
-      {/* stopPropagation evita que el click DENTRO del modal lo cierre */}
       <div className="modal__contenido" onClick={(e) => e.stopPropagation()}>
 
         <button className="modal__cerrar" onClick={onCerrar}>×</button>
 
-        {/* Carrusel de imágenes */}
         <div className="modal__imagen-wrapper">
           <img
             src={trabajo.imagenes[indiceImagen]}
@@ -138,7 +132,6 @@ function TrabajoModal({ trabajo, onCerrar }) {
             className="modal__imagen"
           />
 
-          {/* Las flechas solo aparecen si hay más de una imagen */}
           {trabajo.imagenes.length > 1 && (
             <>
               <button className="modal__flecha modal__flecha--izq" onClick={anteriorImagen}>‹</button>
@@ -146,13 +139,11 @@ function TrabajoModal({ trabajo, onCerrar }) {
             </>
           )}
 
-          {/* Indicador de cuántas imágenes hay */}
           <div className="modal__contador">
             {indiceImagen + 1} / {trabajo.imagenes.length}
           </div>
         </div>
 
-        {/* Texto del trabajo */}
         <div className="modal__texto">
           <h3 className="modal__titulo">{trabajo.titulo}</h3>
           <p className="modal__procedimiento">{trabajo.procedimiento}</p>
@@ -164,68 +155,23 @@ function TrabajoModal({ trabajo, onCerrar }) {
 }
 
 function Trabajos() {
-  const porPagina = 3
-  const [pagina, setPagina] = useState(0)
-  const [transicion, setTransicion] = useState('')
-
-  // Estado para saber qué trabajo está seleccionado (null = modal cerrado)
   const [trabajoSeleccionado, setTrabajoSeleccionado] = useState(null)
-
-  const totalPaginas = Math.ceil(trabajos.length / porPagina)
-  const inicio = pagina * porPagina
-  const trabajosVisibles = trabajos.slice(inicio, inicio + porPagina)
-
-  const irAPagina = (nuevaPagina, direccion) => {
-    if (transicion) return
-    setTransicion(direccion === 'siguiente' ? 'salida-izq' : 'salida-der')
-    setTimeout(() => {
-      setPagina(nuevaPagina)
-      setTransicion(direccion === 'siguiente' ? 'entrada-der' : 'entrada-izq')
-      setTimeout(() => setTransicion(''), 300)
-    }, 300)
-  }
-
-  const paginaAnterior = () => {
-    const nueva = pagina === 0 ? totalPaginas - 1 : pagina - 1
-    irAPagina(nueva, 'anterior')
-  }
-
-  const paginaSiguiente = () => {
-    const nueva = pagina === totalPaginas - 1 ? 0 : pagina + 1
-    irAPagina(nueva, 'siguiente')
-  }
 
   return (
     <section className="trabajos" id="trabajos">
       <h2 className="trabajos__titulo">Trabajos Realizados</h2>
 
-      <div className="trabajos__carrusel">
-        <button className="trabajos__flecha" onClick={paginaAnterior}>‹</button>
-
-        <div className={`trabajos__grid trabajos__grid--${transicion}`}>
-          {trabajosVisibles.map((trabajo) => (
-            <TrabajosCard
-              key={trabajo.id}
-              trabajo={trabajo}
-              onClick={setTrabajoSeleccionado}
-            />
-          ))}
-        </div>
-
-        <button className="trabajos__flecha" onClick={paginaSiguiente}>›</button>
-      </div>
-
-      <div className="trabajos__indicadores">
-        {Array.from({ length: totalPaginas }).map((_, index) => (
-          <button
-            key={index}
-            className={`trabajos__punto ${index === pagina ? 'trabajos__punto--activo' : ''}`}
-            onClick={() => setPagina(index)}
+      {/* Contenedor con scroll horizontal — el navegador maneja el "enganche" solo */}
+      <div className="trabajos__scroll">
+        {trabajos.map((trabajo) => (
+          <TrabajosCard
+            key={trabajo.id}
+            trabajo={trabajo}
+            onClick={setTrabajoSeleccionado}
           />
         ))}
       </div>
 
-      {/* El modal solo se muestra si hay un trabajo seleccionado */}
       {trabajoSeleccionado && (
         <TrabajoModal
           trabajo={trabajoSeleccionado}

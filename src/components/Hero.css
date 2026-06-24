@@ -1,8 +1,10 @@
+/* ===== BASE: ESTILOS MOBILE (por defecto) ===== */
+
 .hero {
   position: relative;
   width: 100%;
-  height: 78vh;
-  margin-top: 90px;
+  height: 60vh;
+  margin-top: 64px;
   overflow: hidden;
   cursor: grab;
   user-select: none;
@@ -26,7 +28,7 @@
   z-index: 1;
 }
 
-/* Salidas sin opacity — solo se mueven */
+/* Salidas — solo se mueven, sin opacity */
 .hero__imagen--salida-izq {
   animation: salirIzq 0.5s ease forwards;
 }
@@ -45,7 +47,7 @@
   to   { transform: translateX(100%); }
 }
 
-/* Entradas sin opacity */
+/* Entradas */
 .hero__imagen--entrada-izq {
   animation: entrarDerecha 0.5s ease forwards;
 }
@@ -74,14 +76,14 @@
   z-index: 2;
 }
 
-/* Texto con fade */
+/* Texto — en mobile ocupa todo el ancho disponible */
 .hero__texto {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  max-width: 66%;
-  padding: 0 150px 56px;
+  max-width: 100%;
+  padding: 0 24px 32px;
   z-index: 3;
   transition: opacity 0.3s ease;
 }
@@ -95,25 +97,45 @@
 }
 
 .hero__titulo {
-  font-size: 2.6rem;
+  font-size: 1.7rem;
   color: var(--white);
   margin-bottom: 8px;
-  line-height: 1.2;
+  line-height: 1.25;
 }
 
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
+/* ===== TABLET EN ADELANTE (768px y más) ===== */
+@media (min-width: 768px) {
+
   .hero {
     height: 70vh;
+    margin-top: 90px;
   }
 
   .hero__texto {
-    padding: 24px 32px;
+    max-width: 75%;
+    padding: 0 56px 48px;
   }
 
   .hero__titulo {
-    font-size: 1.9rem;
+    font-size: 2.2rem;
+  }
+}
+
+
+/* ===== DESKTOP GRANDE (1024px y más) ===== */
+@media (min-width: 1024px) {
+
+  .hero {
+    height: 78vh;
   }
 
+  .hero__texto {
+    max-width: 66%;
+    padding: 0 150px 56px;
+  }
+
+  .hero__titulo {
+    font-size: 2.6rem;
+  }
 }

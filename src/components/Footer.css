@@ -1,44 +1,53 @@
+/* ===== BASE: ESTILOS MOBILE (por defecto) ===== */
+
 .footer {
-  background-color: #041f43;
+  background-color: #1E293B;
   color: rgba(255, 255, 255, 0.75);
-  padding: 48px 32px 0;
+  padding: 40px 24px 0;
 }
 
 .footer__inner {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   max-width: 1100px;
   margin: 0 auto;
-  padding-bottom: 48px;
+  padding-bottom: 32px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer__logo {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: var(--white);
   margin-bottom: 8px;
 }
 
 .footer__slogan {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   line-height: 1.6;
 }
 
 .footer__titulo {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: rgba(255, 255, 255, 0.45);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .footer__seccion {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+}
+
+/* Evita que un email largo fuerce el ancho del contenedor */
+.footer__seccion p,
+.footer__seccion a {
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .footer__seccion a {
@@ -53,7 +62,46 @@
 .footer__copyright {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 20px 0;
-  font-size: 0.82rem;
+  padding: 16px 0;
+  font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.35);
+  text-align: center;
+}
+
+
+/* ===== TABLET EN ADELANTE (768px y más) ===== */
+@media (min-width: 768px) {
+
+  .footer {
+    padding: 48px 32px 0;
+  }
+
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+  }
+
+  .footer__logo {
+    font-size: 1.3rem;
+  }
+
+  .footer__slogan {
+    font-size: 0.9rem;
+  }
+
+  .footer__titulo {
+    font-size: 0.8rem;
+  }
+
+  .footer__seccion {
+    font-size: 0.9rem;
+  }
+
+  .footer__copyright {
+    padding: 20px 0;
+    font-size: 0.82rem;
+    text-align: left;
+  }
 }

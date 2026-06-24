@@ -16,7 +16,7 @@
 
 /* El recuadro grande que envuelve todo */
 .servicios__recuadro {
-  background-color: #bddff7;
+ 
   border-radius: 16px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
