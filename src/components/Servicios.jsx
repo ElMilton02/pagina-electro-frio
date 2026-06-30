@@ -1,4 +1,6 @@
 import './Servicios.css'
+import { motion } from 'framer-motion'
+
 
 const servicios = [
   {
@@ -27,9 +29,15 @@ const servicios = [
   },
 ]
 
-function ServicioCard({ servicio }) {
+function ServicioCard({ servicio, index }) {
   return (
-    <div className="servicio-card">
+    <motion.div
+      className="servicio-card"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.15 }}
+      viewport={{ once: true }}
+    >
       <img
         src={servicio.imagen}
         alt={servicio.titulo}
@@ -37,7 +45,7 @@ function ServicioCard({ servicio }) {
       />
       <h3 className="servicio-card__titulo">{servicio.titulo}</h3>
       <p className="servicio-card__descripcion">{servicio.descripcion}</p>
-    </div>
+    </motion.div>
   )
 }
 
@@ -50,8 +58,8 @@ function Servicios() {
 
       {/* Un solo recuadro que envuelve los 4 servicios */}
       <div className="servicios__recuadro">
-        {servicios.map((servicio) => (
-          <ServicioCard key={servicio.id} servicio={servicio} />
+        {servicios.map((servicio, index) => (
+          <ServicioCard key={servicio.id} servicio={servicio} index={index} />
         ))}
       </div>
     </section>

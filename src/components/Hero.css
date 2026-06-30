@@ -14,56 +14,72 @@
   cursor: grabbing;
 }
 
-.hero__imagen {
+/* El frame mide exactamente el ancho del hero — es lo que se desliza */
+.hero__frame {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  pointer-events: none;
+  overflow: hidden;
 }
 
-.hero__imagen--entrante {
+.hero__frame--entrante {
   z-index: 1;
 }
 
-/* Salidas — solo se mueven, sin opacity */
-.hero__imagen--salida-izq {
-  animation: salirIzq 0.5s ease forwards;
+/* La imagen vive DENTRO del frame, más ancha, y es la que panea */
+.hero__imagen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 110%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+  animation: paneo 5s ease-in-out forwards;
 }
 
-.hero__imagen--salida-der {
-  animation: salirDer 0.5s ease forwards;
+@keyframes paneo {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-5%); }
+}
+
+/* El frame se desliza — al medir exactamente 100%, los bordes siempre coinciden */
+.hero__frame--salida-izq {
+  animation: salirIzq 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.hero__frame--salida-der {
+  animation: salirDer 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes salirIzq {
-  from { transform: translateX(0); }
+  from { transform: translateX(0%); }
   to   { transform: translateX(-100%); }
 }
 
 @keyframes salirDer {
-  from { transform: translateX(0); }
+  from { transform: translateX(0%); }
   to   { transform: translateX(100%); }
 }
 
-/* Entradas */
-.hero__imagen--entrada-izq {
-  animation: entrarDerecha 0.5s ease forwards;
+.hero__frame--entrada-izq {
+  animation: entrarDerecha 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.hero__imagen--entrada-der {
-  animation: entrarIzquierda 0.5s ease forwards;
+.hero__frame--entrada-der {
+  animation: entrarIzquierda 0.7s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 @keyframes entrarDerecha {
   from { transform: translateX(100%); }
-  to   { transform: translateX(0); }
+  to   { transform: translateX(0%); }
 }
 
 @keyframes entrarIzquierda {
   from { transform: translateX(-100%); }
-  to   { transform: translateX(0); }
+  to   { transform: translateX(0%); }
 }
 
 .hero__sombra {

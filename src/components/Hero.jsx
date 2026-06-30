@@ -29,21 +29,19 @@ function Hero() {
   const intervaloRef = useRef(null)
 
   const cambiarSlide = (nuevoIndice, dir) => {
-    if (deslizando) return
+    if (deslizando) return // evita cambios mientras ya hay uno en curso
 
-    // Ocultar texto
-    setTextoVisible(false)
-    setDireccion(dir)
-    setSiguiente(nuevoIndice)
-    setDeslizando(true)
+    setTextoVisible(false) // oculta el texto
+    setDireccion(dir) // guarda la dirección
+    setSiguiente(nuevoIndice) // guarda cuál imagen viene
+    setDeslizando(true) // activa el modo "en transición"
 
     setTimeout(() => {
-      setActual(nuevoIndice)
-      setSiguiente(null)
-      setDeslizando(false)
-      // Mostrar texto cuando la imagen llegó
-      setTextoVisible(true)
-    }, 500)
+      setActual(nuevoIndice) // actualiza la imagen actual
+      setSiguiente(null) // elimina la imagen entrante
+      setDeslizando(false) // desactiva el modo "en transición"
+      setTextoVisible(true) // muestra el texto nuevo
+    }, 700) // igual que la duración de la animación CSS
   }
 
   const irSiguiente = (indiceActual) => {
@@ -93,37 +91,48 @@ function Hero() {
       onTouchStart={alEmpezarArrastre}
       onTouchEnd={alTerminarArrastre}
     >
-      <img
-        src={slides[actual].imagen}
-        alt={slides[actual].titulo}
-        draggable="false"
-        className={`hero__imagen ${
+      {/* Frame actual — se desliza al cambiar de slide */}
+      <div
+        className={`hero__frame ${
           deslizando
             ? direccion === 'izq'
-              ? 'hero__imagen--salida-izq'
-              : 'hero__imagen--salida-der'
+              ? 'hero__frame--salida-izq'
+              : 'hero__frame--salida-der'
             : ''
         }`}
-      />
-
-      {deslizando && siguiente !== null && (
+      >
         <img
-          src={slides[siguiente].imagen}
-          alt={slides[siguiente].titulo}
+          key={actual}
+          src={slides[actual].imagen}
+          alt={slides[actual].titulo}
           draggable="false"
-          className={`hero__imagen hero__imagen--entrante ${
-            direccion === 'izq'
-              ? 'hero__imagen--entrada-izq'
-              : 'hero__imagen--entrada-der'
-          }`}
+          className="hero__imagen"
         />
+      </div>
+
+      {/* Frame entrante — solo existe mientras dura la transición */}
+      {deslizando && siguiente !== null && (
+        <div
+          className={`hero__frame hero__frame--entrante ${
+            direccion === 'izq'
+              ? 'hero__frame--entrada-izq'
+              : 'hero__frame--entrada-der'
+          }`}
+        >
+          <img
+            key={siguiente}
+            src={slides[siguiente].imagen}
+            alt={slides[siguiente].titulo}
+            draggable="false"
+            className="hero__imagen"
+          />
+        </div>
       )}
 
       <div className="hero__sombra" />
 
       <div className={`hero__texto ${textoVisible ? 'hero__texto--visible' : 'hero__texto--oculto'}`}>
         <h2 className="hero__titulo">{slides[actual].titulo}</h2>
-+
       </div>
 
     </section>

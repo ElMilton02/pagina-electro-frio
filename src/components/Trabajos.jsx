@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import './Trabajos.css'
 
 const trabajos = [
@@ -96,15 +97,23 @@ const trabajos = [
   },
 ]
 
-function TrabajosCard({ trabajo, onClick }) {
+// Tarjeta con animación de entrada al hacer scroll
+function TrabajosCard({ trabajo, onClick, index }) {
   return (
-    <div className="trabajo-card" onClick={() => onClick(trabajo)}>
+    <motion.div
+      className="trabajo-card"
+      onClick={() => onClick(trabajo)}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: (index % 3) * 0.15 }}
+      viewport={{ once: true, amount: 0.3 }}
+    >
       <img src={trabajo.imagenes[0]} alt={trabajo.titulo} className="trabajo-card__imagen" />
       <div className="trabajo-card__contenido">
         <h3 className="trabajo-card__titulo">{trabajo.titulo}</h3>
         <p className="trabajo-card__descripcion">{trabajo.descripcion}</p>
       </div>
-    </div>
+    </motion.div>
   )
 }
 
@@ -120,8 +129,24 @@ function TrabajoModal({ trabajo, onCerrar }) {
   }
 
   return (
-    <div className="modal__fondo" onClick={onCerrar}>
-      <div className="modal__contenido" onClick={(e) => e.stopPropagation()}>
+    // El fondo aparece y desaparece con un fade
+    <motion.div
+      className="modal__fondo"
+      onClick={onCerrar}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.25 }}
+    >
+      {/* El contenido entra con un fade + escala suave desde abajo */}
+      <motion.div
+        className="modal__contenido"
+        onClick={(e) => e.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.92, y: 20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.92, y: 20 }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+      >
 
         <button className="modal__cerrar" onClick={onCerrar}>×</button>
 
@@ -149,8 +174,8 @@ function TrabajoModal({ trabajo, onCerrar }) {
           <p className="modal__procedimiento">{trabajo.procedimiento}</p>
         </div>
 
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   )
 }
 
@@ -161,23 +186,26 @@ function Trabajos() {
     <section className="trabajos" id="trabajos">
       <h2 className="trabajos__titulo">Trabajos Realizados</h2>
 
-      {/* Contenedor con scroll horizontal — el navegador maneja el "enganche" solo */}
       <div className="trabajos__scroll">
-        {trabajos.map((trabajo) => (
+        {trabajos.map((trabajo, index) => (
           <TrabajosCard
             key={trabajo.id}
             trabajo={trabajo}
             onClick={setTrabajoSeleccionado}
+            index={index}
           />
         ))}
       </div>
 
-      {trabajoSeleccionado && (
-        <TrabajoModal
-          trabajo={trabajoSeleccionado}
-          onCerrar={() => setTrabajoSeleccionado(null)}
-        />
-      )}
+      {/* AnimatePresence permite animar el modal también al CERRARSE, no solo al abrirse */}
+      <AnimatePresence>
+        {trabajoSeleccionado && (
+          <TrabajoModal
+            trabajo={trabajoSeleccionado}
+            onCerrar={() => setTrabajoSeleccionado(null)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   )
 }

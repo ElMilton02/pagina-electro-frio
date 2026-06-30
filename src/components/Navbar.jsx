@@ -5,6 +5,7 @@ function Navbar() {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
   }
 
+
   return (
     <nav className="navbar">
       <div className="navbar__inner">
@@ -31,6 +32,6 @@ function Navbar() {
       </div>
     </nav>
   )
-}
 
+}
 export default Navbar
