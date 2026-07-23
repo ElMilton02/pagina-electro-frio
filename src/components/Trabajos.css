@@ -1,11 +1,15 @@
 /* ===== BASE: ESTILOS MOBILE (por defecto) ===== */
 
 .trabajos {
+  position: relative;
   padding: 56px 10px;
   background-color: #041f43;
+  overflow: hidden;
 }
 
 .trabajos__titulo {
+  position: relative;
+  z-index: 1;
   font-size: 1.8rem;
   color: var(--white);
   text-align: center;
@@ -22,20 +26,24 @@
   -webkit-overflow-scrolling: touch;
   padding: 0 16px 8px 32px;
   scrollbar-width: none;
+  position: relative;
+  z-index: 1;
 }
 
 .trabajos__scroll::-webkit-scrollbar {
-  display: none; /* oculta la barra de scroll en Chrome/Safari */
+  display: none;
 }
 
 .trabajo-card {
-  scroll-snap-align: start; /* punto exacto donde la tarjeta encaja */
-  flex: 0 0 78%; /* cada tarjeta ocupa 78% del ancho — deja ver la siguiente */
+  scroll-snap-align: start;
+  flex: 0 0 78%;
   cursor: pointer;
   background-color: var(--white);
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 1;
 }
 
 .trabajo-card:hover {
@@ -65,7 +73,75 @@
   line-height: 1.6;
 }
 
+/* ===== COPOS DE NIEVE ===== */
+.nieve {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
 
+.nieve__copo {
+  position: absolute;
+  top: -30px;
+  left: var(--x);
+  font-size: var(--size);
+  opacity: var(--op);
+  color: rgba(255, 255, 255, 0.9);
+  user-select: none;
+  will-change: transform;
+  animation: caerCopo var(--dur) var(--delay) linear infinite;
+}
+
+@keyframes caerCopo {
+  0%   { transform: translateY(-30px) translateX(0) rotate(0deg); opacity: 0; }
+  5%   { opacity: var(--op); }
+  95%  { opacity: var(--op); }
+  100% { transform: translateY(110vh) translateX(var(--deriva)) rotate(360deg); opacity: 0; }
+}
+
+/* Capa cerca */
+.nieve__copo--1  { --x: 5%;  --size: 22px; --dur: 4s;   --delay: 0s;   --deriva: 20px;  --op: 0.9; }
+.nieve__copo--2  { --x: 15%; --size: 20px; --dur: 3.5s; --delay: 1s;   --deriva: -15px; --op: 0.8; }
+.nieve__copo--3  { --x: 28%; --size: 24px; --dur: 4.5s; --delay: 2s;   --deriva: 30px;  --op: 0.9; }
+.nieve__copo--4  { --x: 42%; --size: 19px; --dur: 3s;   --delay: 0.5s; --deriva: -25px; --op: 0.85; }
+.nieve__copo--5  { --x: 58%; --size: 23px; --dur: 4s;   --delay: 1.5s; --deriva: 15px;  --op: 0.9; }
+.nieve__copo--6  { --x: 70%; --size: 21px; --dur: 3.5s; --delay: 3s;   --deriva: -20px; --op: 0.8; }
+.nieve__copo--7  { --x: 82%; --size: 20px; --dur: 4.5s; --delay: 0s;   --deriva: 25px;  --op: 0.85; }
+.nieve__copo--8  { --x: 92%; --size: 22px; --dur: 3s;   --delay: 2s;   --deriva: -10px; --op: 0.9; }
+.nieve__copo--9  { --x: 35%; --size: 24px; --dur: 4s;   --delay: 4s;   --deriva: 20px;  --op: 0.8; }
+.nieve__copo--10 { --x: 75%; --size: 19px; --dur: 3.5s; --delay: 1s;   --deriva: -30px; --op: 0.85; }
+
+/* Capa media */
+.nieve__copo--11 { --x: 8%;  --size: 13px; --dur: 7s;   --delay: 1s;   --deriva: -15px; --op: 0.55; }
+.nieve__copo--12 { --x: 20%; --size: 14px; --dur: 8s;   --delay: 0s;   --deriva: 20px;  --op: 0.5; }
+.nieve__copo--13 { --x: 33%; --size: 12px; --dur: 6.5s; --delay: 3s;   --deriva: -10px; --op: 0.6; }
+.nieve__copo--14 { --x: 47%; --size: 15px; --dur: 7.5s; --delay: 2s;   --deriva: 25px;  --op: 0.5; }
+.nieve__copo--15 { --x: 60%; --size: 13px; --dur: 8s;   --delay: 0.5s; --deriva: -20px; --op: 0.55; }
+.nieve__copo--16 { --x: 72%; --size: 14px; --dur: 6s;   --delay: 4s;   --deriva: 15px;  --op: 0.5; }
+.nieve__copo--17 { --x: 85%; --size: 12px; --dur: 7s;   --delay: 1.5s; --deriva: -25px; --op: 0.6; }
+.nieve__copo--18 { --x: 95%; --size: 15px; --dur: 8s;   --delay: 3s;   --deriva: 10px;  --op: 0.5; }
+.nieve__copo--19 { --x: 25%; --size: 13px; --dur: 7.5s; --delay: 5s;   --deriva: -15px; --op: 0.55; }
+.nieve__copo--20 { --x: 55%; --size: 14px; --dur: 6.5s; --delay: 2s;   --deriva: 20px;  --op: 0.5; }
+.nieve__copo--21 { --x: 40%; --size: 12px; --dur: 7s;   --delay: 0s;   --deriva: -10px; --op: 0.6; }
+.nieve__copo--22 { --x: 65%; --size: 15px; --dur: 8s;   --delay: 1s;   --deriva: 25px;  --op: 0.5; }
+
+/* Capa lejos */
+.nieve__copo--23 { --x: 3%;  --size: 7px; --dur: 12s; --delay: 0s;  --deriva: 10px;  --op: 0.2; }
+.nieve__copo--24 { --x: 12%; --size: 6px; --dur: 13s; --delay: 2s;  --deriva: -8px;  --op: 0.15; }
+.nieve__copo--25 { --x: 22%; --size: 8px; --dur: 11s; --delay: 1s;  --deriva: 12px;  --op: 0.25; }
+.nieve__copo--26 { --x: 38%; --size: 6px; --dur: 14s; --delay: 3s;  --deriva: -10px; --op: 0.2; }
+.nieve__copo--27 { --x: 50%; --size: 7px; --dur: 12s; --delay: 5s;  --deriva: 8px;   --op: 0.15; }
+.nieve__copo--28 { --x: 63%; --size: 8px; --dur: 13s; --delay: 1s;  --deriva: -12px; --op: 0.25; }
+.nieve__copo--29 { --x: 77%; --size: 6px; --dur: 11s; --delay: 4s;  --deriva: 10px;  --op: 0.2; }
+.nieve__copo--30 { --x: 88%; --size: 7px; --dur: 14s; --delay: 2s;  --deriva: -8px;  --op: 0.15; }
+.nieve__copo--31 { --x: 10%; --size: 8px; --dur: 12s; --delay: 6s;  --deriva: 12px;  --op: 0.25; }
+.nieve__copo--32 { --x: 30%; --size: 6px; --dur: 13s; --delay: 0s;  --deriva: -10px; --op: 0.2; }
+.nieve__copo--33 { --x: 45%; --size: 7px; --dur: 11s; --delay: 3s;  --deriva: 8px;   --op: 0.15; }
+.nieve__copo--34 { --x: 57%; --size: 8px; --dur: 14s; --delay: 1s;  --deriva: -12px; --op: 0.25; }
+.nieve__copo--35 { --x: 80%; --size: 6px; --dur: 12s; --delay: 5s;  --deriva: 10px;  --op: 0.2; }
+.nieve__copo--36 { --x: 97%; --size: 7px; --dur: 13s; --delay: 2s;  --deriva: -8px;  --op: 0.15; }
 /* ===== TABLET (768px y más) ===== */
 @media (min-width: 768px) {
 
@@ -74,12 +150,10 @@
     margin-bottom: 40px;
   }
 
-  /* Tarjetas más angostas — se ven 1 y media en pantallas medianas */
   .trabajo-card {
     flex: 0 0 45%;
   }
 }
-
 
 /* ===== DESKTOP (1024px y más) ===== */
 @media (min-width: 1024px) {
@@ -91,10 +165,8 @@
     overflow-x: visible;
     max-width: 1400px;
     margin: 0 auto;
-
   }
 }
-
 
 /* ===== MODAL ===== */
 

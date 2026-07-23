@@ -1,4 +1,5 @@
 import './Navbar.css'
+import logo from '../assets/logo.png'
 
 function Navbar() {
   const scrollTo = (id) => {
@@ -11,7 +12,7 @@ function Navbar() {
       <div className="navbar__inner">
 
         <div className="navbar__izquierda">
-          <h1 className="navbar__logo">Electro Frío</h1>
+          <img src={logo} alt="Electro Frío" className="navbar__logo" />
           <div className="navbar__links">
             <button onClick={() => scrollTo('servicios')}>Servicios</button>
             <button onClick={() => scrollTo('trabajos')}>Trabajos</button>
@@ -25,7 +26,7 @@ function Navbar() {
             {/* Texto corto — visible solo en mobile */}
             <span className="navbar__llamada-corto">Llamar</span>
             {/* Texto largo — visible solo en pantallas grandes */}
-            <span className="navbar__llamada-largo">Contacto: +54 2314-574880</span>
+            <span className="navbar__llamada-largo">Contacto: +54 2314-xxxxxx</span>
           </button>
         </div>
 

@@ -97,7 +97,16 @@ const trabajos = [
   },
 ]
 
-// Tarjeta con animación de entrada al hacer scroll
+function CoposDeNieve() {
+  return (
+    <div className="nieve">
+      {Array.from({ length: 36 }).map((_, i) => (
+        <span key={i} className={`nieve__copo nieve__copo--${i + 1}`}>❄</span>
+      ))}
+    </div>
+  )
+}
+
 function TrabajosCard({ trabajo, onClick, index }) {
   return (
     <motion.div
@@ -129,7 +138,6 @@ function TrabajoModal({ trabajo, onCerrar }) {
   }
 
   return (
-    // El fondo aparece y desaparece con un fade
     <motion.div
       className="modal__fondo"
       onClick={onCerrar}
@@ -138,7 +146,6 @@ function TrabajoModal({ trabajo, onCerrar }) {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.25 }}
     >
-      {/* El contenido entra con un fade + escala suave desde abajo */}
       <motion.div
         className="modal__contenido"
         onClick={(e) => e.stopPropagation()}
@@ -147,7 +154,6 @@ function TrabajoModal({ trabajo, onCerrar }) {
         exit={{ opacity: 0, scale: 0.92, y: 20 }}
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-
         <button className="modal__cerrar" onClick={onCerrar}>×</button>
 
         <div className="modal__imagen-wrapper">
@@ -184,6 +190,7 @@ function Trabajos() {
 
   return (
     <section className="trabajos" id="trabajos">
+      <CoposDeNieve />
       <h2 className="trabajos__titulo">Trabajos Realizados</h2>
 
       <div className="trabajos__scroll">
@@ -197,7 +204,6 @@ function Trabajos() {
         ))}
       </div>
 
-      {/* AnimatePresence permite animar el modal también al CERRARSE, no solo al abrirse */}
       <AnimatePresence>
         {trabajoSeleccionado && (
           <TrabajoModal
