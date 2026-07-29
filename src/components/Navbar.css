@@ -1,8 +1,8 @@
-/* ===== BASE: ESTILOS MOBILE (por defecto) ===== */
+/* ===== BASE: MOBILE PEQUEÑO (por defecto) ===== */
 
 .navbar {
   background-color: #041f43;
-  padding: 16px 20px;
+  padding: 10px 14px;
   position: fixed;
   top: 0;
   left: 0;
@@ -18,23 +18,24 @@
   width: 100%;
   max-width: 1350px;
   margin: 0 auto;
-  gap: 12px;
+  gap: 8px;
 }
 
 .navbar__izquierda {
   display: flex;
   align-items: center;
-  gap: 16px;
-  min-width: 0; /* permite que el contenido se achique sin desbordar */
+  gap: 8px;
+  min-width: 0;
 }
 
+/* Logo pequeño en mobile chico */
 .navbar__logo {
-  height: 60px;
+  height: 36px;
   width: auto;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
-/* Los links de navegación están ocultos en mobile */
 .navbar__links {
   display: none;
 }
@@ -42,18 +43,18 @@
 .navbar__derecha {
   display: flex;
   align-items: center;
-  flex-shrink: 0; /* el botón nunca se achica, mantiene su tamaño */
+  flex-shrink: 0;
 }
 
 .navbar__llamada {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   background-color: #F59E0B;
   color: var(--white);
-  padding: 10px 18px;
+  padding: 8px 12px;
   border-radius: 100px;
-  font-size: 0.9rem;
+  font-size: 0.78rem;
   font-weight: 700;
   border: 2px solid #F59E0B;
   cursor: pointer;
@@ -67,14 +68,30 @@
   transform: scale(1.04);
 }
 
-/* En mobile se muestra el texto corto */
 .navbar__llamada-corto {
   display: inline;
 }
 
-/* El texto largo está oculto en mobile */
 .navbar__llamada-largo {
   display: none;
+}
+
+
+/* ===== MOBILE MEDIANO (480px y más) ===== */
+@media (min-width: 480px) {
+
+  .navbar {
+    padding: 12px 18px;
+  }
+
+  .navbar__logo {
+    height: 48px;
+  }
+
+  .navbar__llamada {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
 }
 
 
@@ -86,10 +103,13 @@
   }
 
   .navbar__logo {
-    font-size: 1.7rem;
+    height: 60px;
   }
 
-  /* Mostramos los links de navegación */
+  .navbar__izquierda {
+    gap: 16px;
+  }
+
   .navbar__links {
     display: flex;
     gap: 4px;
@@ -133,7 +153,6 @@
     font-size: 1rem;
   }
 
-  /* En tablet/desktop ya mostramos el texto largo */
   .navbar__llamada-corto {
     display: none;
   }
@@ -156,7 +175,7 @@
   }
 
   .navbar__logo {
-    font-size: 2rem;
+    height: 72px;
   }
 
   .navbar__links button {

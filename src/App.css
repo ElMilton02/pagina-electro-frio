@@ -13,11 +13,9 @@
   box-sizing: border-box;
 }
 
-body {
+body, html {
   font-family: sans-serif;
   background-color: #ffffff;
-}
-
-html {
-  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
 }

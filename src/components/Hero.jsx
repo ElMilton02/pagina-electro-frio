@@ -59,7 +59,7 @@ function Hero() {
         irSiguiente(prev)
         return prev
       })
-    }, 5000)
+    }, 7000) //tiempo que tarda una imagen en pantalla
   }
 
   useEffect(() => {

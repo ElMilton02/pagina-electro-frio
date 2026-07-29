@@ -1,4 +1,5 @@
 import './Footer.css'
+import logo from '../assets/logo.png'
 
 function Footer() {
   return (
@@ -7,7 +8,7 @@ function Footer() {
 
         {/* Logo y descripción */}
         <div className="footer__marca">
-          <h2 className="footer__logo">Electro Frío</h2>
+          <img src={logo} alt="Electro Frío" className="navbar__logo" />
           <p className="footer__slogan">Especialistas en refrigeración industrial.</p>
         </div>
 

@@ -37,7 +37,7 @@
   height: 100%;
   object-fit: cover;
   pointer-events: none;
-  animation: paneo 5s ease-in-out forwards;
+  animation: paneo 7s ease-in-out forwards; /*tiempo del paneo */
 }
 
 @keyframes paneo {
