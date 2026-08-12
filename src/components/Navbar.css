@@ -59,6 +59,7 @@
   border: 2px solid #F59E0B;
   cursor: pointer;
   white-space: nowrap;
+  text-decoration: none;
   transition: background 0.2s, color 0.2s, transform 0.2s;
 }
 

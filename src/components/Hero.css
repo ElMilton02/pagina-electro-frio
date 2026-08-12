@@ -1,10 +1,9 @@
-/* ===== BASE: ESTILOS MOBILE (por defecto) ===== */
-
+/* ===== BASE: MOBILE PEQUEÑO (por defecto) ===== */
 .hero {
   position: relative;
   width: 100%;
   height: 60vh;
-  margin-top: 64px;
+  margin-top: 56px; /* coincide con navbar mobile pequeño */
   overflow: hidden;
   cursor: grab;
   user-select: none;
@@ -125,7 +124,7 @@
 
   .hero {
     height: 70vh;
-    margin-top: 90px;
+    margin-top: 108px;
   }
 
   .hero__texto {

@@ -21,13 +21,13 @@ function Navbar() {
         </div>
 
         <div className="navbar__derecha">
-          <button className="navbar__llamada" onClick={() => scrollTo('contacto')}>
+           <a href="tel:+549231461397" className="navbar__llamada">
             <span className="navbar__llamada-icono">📞</span>
             {/* Texto corto — visible solo en mobile */}
             <span className="navbar__llamada-corto">Llamar</span>
             {/* Texto largo — visible solo en pantallas grandes */}
-            <span className="navbar__llamada-largo">Contacto: +54 2314-xxxxxx</span>
-          </button>
+            <span className="navbar__llamada-largo">Contacto: +54 9 2314 61-3197</span>
+          </a>  
         </div>
 
       </div>
