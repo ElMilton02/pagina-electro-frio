@@ -1,31 +1,28 @@
 import './Ubicacion.css'
 
 function Ubicacion() {
-  const lat = -36.42746126473864
-  const lng = -61.416376130135845
+  const lugar = 'Electro Frio B6553 Urdampilleta, Provincia de Buenos Aires'
 
   const abrirMaps = () => {
-    window.open('https://www.google.com/maps?q=' + lat + ',' + lng, '_blank')
+    window.open('https://www.google.com/maps/search/' + encodeURIComponent(lugar), '_blank')
   }
 
   return (
     <section className="ubicacion" id="ubicacion">
-
       <div className="ubicacion__header">
         <button className="ubicacion__boton" onClick={abrirMaps}>
-          Donde encontrarnos
+          Donde estamos
         </button>
       </div>
 
       <iframe
         className="ubicacion__mapa"
-        src={'https://maps.google.com/maps?q=' + lat + ',' + lng + '&output=embed'}
+        src={'https://maps.google.com/maps?q=' + encodeURIComponent(lugar) + '&output=embed'}
         allowFullScreen
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
         title="Ubicacion Electro Frio"
       />
-
     </section>
   )
 }

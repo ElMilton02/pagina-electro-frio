@@ -1,26 +1,27 @@
+/* ===== BASE: MOBILE (por defecto) ===== */
+
 .servicios {
-  padding: 100px 32px;
+  padding: 56px 24px;
 }
 
 .servicios__header {
   max-width: 700px;
-  margin: 0 auto 56px;
+  margin: 0 auto 40px;
   text-align: center;
 }
 
 .servicios__titulo {
-  font-size: 2.8rem;
+  font-size: 2rem;
   color: var(--dark);
   margin-bottom: 16px;
 }
 
-/* El recuadro grande que envuelve todo */
+/* En mobile: 1 columna */
 .servicios__recuadro {
- 
   border-radius: 16px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  max-width: 1400px;
+  grid-template-columns: 1fr;
+  max-width: 1600px;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -32,16 +33,18 @@
   position: relative;
 }
 
-/* Línea divisoria difuminada — gradiente en lugar de border sólido */
+/* En mobile: línea horizontal abajo de cada tarjeta */
 .servicio-card::after {
   content: '';
   position: absolute;
-  top: 10%;
-  bottom: 10%;
-  right: 0;
-  width: 1px;
+  top: auto;
+  bottom: 0;
+  left: 10%;
+  right: 10%;
+  width: auto;
+  height: 1px;
   background: linear-gradient(
-    to bottom,
+    to right,
     transparent,
     rgba(15, 23, 42, 0.15) 30%,
     rgba(15, 23, 42, 0.15) 70%,
@@ -55,31 +58,33 @@
 
 .servicio-card__imagen {
   width: 100%;
-  height: 200px;
+  height: 220px;
   object-fit: cover;
   border-radius: 0px;
   margin-bottom: 20px;
 }
 
 .servicio-card__titulo {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: var(--dark);
   margin-bottom: 10px;
 }
 
 .servicio-card__descripcion {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #475569;
   line-height: 1.6;
 }
 
-/* ===== TABLET ===== */
-@media (max-width: 1024px) {
+
+/* ===== TABLET (768px y más) ===== */
+@media (min-width: 768px) {
+
   .servicios__recuadro {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  /* En tablet hay 2 columnas: la línea vertical solo va en la primera (impares) */
+  /* Línea vertical en la primera columna (impares) */
   .servicio-card:nth-child(odd)::after {
     top: 10%;
     bottom: auto;
@@ -96,7 +101,7 @@
     );
   }
 
-  /* Todas las tarjetas (menos las dos últimas) llevan línea horizontal abajo */
+  /* Línea horizontal abajo para todas menos las dos últimas */
   .servicio-card:not(:nth-last-child(-n+2))::after {
     content: '';
     position: absolute;
@@ -116,31 +121,36 @@
   }
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 768px) {
+
+/* ===== DESKTOP (1024px y más) ===== */
+@media (min-width: 1024px) {
+
   .servicios {
-    padding: 56px 24px;
+    padding: 100px 32px;
+  }
+
+  .servicios__header {
+    margin: 0 auto 56px;
   }
 
   .servicios__titulo {
-    font-size: 2rem;
-    margin-bottom: 32px;
+    font-size: 2.8rem;
   }
 
   .servicios__recuadro {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  /* En mobile es 1 columna: solo línea horizontal abajo de cada tarjeta */
+  /* En desktop: línea vertical entre tarjetas */
   .servicio-card::after {
-    top: auto;
-    bottom: 0;
-    left: 10%;
-    right: 10%;
-    width: auto;
-    height: 1px;
+    top: 10%;
+    bottom: 10%;
+    right: 0;
+    left: auto;
+    width: 1px;
+    height: auto;
     background: linear-gradient(
-      to right,
+      to bottom,
       transparent,
       rgba(15, 23, 42, 0.15) 30%,
       rgba(15, 23, 42, 0.15) 70%,
@@ -148,19 +158,15 @@
     );
   }
 
-  .servicio-card:last-child::after {
-    display: none;
-  }
-
   .servicio-card__imagen {
-    height: 220px;
+    height: 250px;
   }
 
   .servicio-card__titulo {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
 
   .servicio-card__descripcion {
-    font-size: 0.95rem;
+    font-size: 1rem;
   }
 }

@@ -68,6 +68,49 @@
   text-align: center;
 }
 
+.footer__logo {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.footer__redes {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.footer__red {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #041f43;
+  
+  border: none;
+  transition: transform 0.2s;
+}
+
+.footer__red svg {
+  width: 20px;
+  height: 20px;
+}
+
+.footer__red--facebook,
+.footer__red--instagram,
+.footer__red--whatsapp {
+  
+  border-color: var(--white);
+}
+
+.footer__red:hover {
+
+  transform: translateY(-3px);
+}
 
 /* ===== TABLET EN ADELANTE (768px y más) ===== */
 @media (min-width: 768px) {

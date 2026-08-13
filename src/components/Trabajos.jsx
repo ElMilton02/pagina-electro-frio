@@ -85,16 +85,6 @@ const trabajos = [
       'https://picsum.photos/seed/trabajo8b/800/600',
     ],
   },
-  {
-    id: 9,
-    titulo: 'Reparación de urgencia',
-    descripcion: 'Atención fuera de horario en planta frigorífica.',
-    procedimiento: 'Atención de urgencia ante falla total del sistema de frío. Diagnóstico rápido, reparación in situ y puesta en marcha en menos de 4 horas para evitar pérdida de mercadería.',
-    imagenes: [
-      'https://picsum.photos/seed/trabajo9a/800/600',
-      'https://picsum.photos/seed/trabajo9b/800/600',
-    ],
-  },
 ]
 
 function CoposDeNieve() {

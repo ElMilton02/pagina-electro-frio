@@ -2,7 +2,7 @@
 
 .trabajos {
   position: relative;
-  padding: 56px 10px;
+  padding: 56px 32px;
   background-color: #5b6686;
   overflow: hidden;
 }
@@ -160,11 +160,12 @@
 
   .trabajos__scroll {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
     overflow-x: visible;
-    max-width: 1400px;
+    max-width: 1900px;
     margin: 0 auto;
+    padding: 0 3px;
   }
 }
 

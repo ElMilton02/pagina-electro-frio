@@ -3,8 +3,15 @@ import logo from '../assets/logo.png'
 
 function Navbar() {
   const scrollTo = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' })
-  }
+    const elemento = document.getElementById(id)
+    const alturaNavbar = document.querySelector('.navbar').offsetHeight
+    const posicion = elemento.getBoundingClientRect().top + window.scrollY - alturaNavbar
+
+  window.scrollTo({
+    top: posicion,
+    behavior: 'smooth'
+  })
+}
 
 
   return (

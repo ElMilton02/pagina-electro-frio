@@ -120,9 +120,9 @@
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.8);
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
-    padding: 10px 16px;
+    padding: 8px 12px;
     border-radius: 8px;
     position: relative;
     transition: color 0.2s;
@@ -132,8 +132,8 @@
     content: '';
     position: absolute;
     bottom: 2px;
-    left: 14px;
-    right: 14px;
+    left: 12px;
+    right: 12px;
     height: 2px;
     background-color: var(--white);
     transform: scaleX(0);
@@ -150,16 +150,17 @@
   }
 
   .navbar__llamada {
-    padding: 14px 28px;
-    font-size: 1rem;
+    padding: 10px 18px;
+    font-size: 0.88rem;
   }
 
+  /* En tablet seguimos mostrando solo el texto corto */
   .navbar__llamada-corto {
-    display: none;
+    display: inline;
   }
 
   .navbar__llamada-largo {
-    display: inline;
+    display: none;
   }
 }
 
@@ -187,5 +188,14 @@
   .navbar__llamada {
     padding: 14px 32px;
     font-size: 1.1rem;
+  }
+
+  /* Recién en desktop mostramos el texto largo */
+  .navbar__llamada-corto {
+    display: none;
+  }
+
+  .navbar__llamada-largo {
+    display: inline;
   }
 }
