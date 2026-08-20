@@ -7,6 +7,7 @@ import Trabajos from './components/Trabajos'
 import Marcas from './components/Marcas'
 import Ubicacion from './components/Ubicacion'
 import Footer from './components/Footer'
+import WhatsApp from './components/WhatsApp'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Marcas />
       <Ubicacion />
       <Footer />
+      <WhatsApp />
     </div>
   )
 }
